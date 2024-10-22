@@ -4,7 +4,7 @@ const letters = Array(26)
   .fill("")
   .map((e, index) => String.fromCharCode(65 + index));
 
-const LetterButton = ({ usedLetters, onLetterClick, step }) => {
+const LetterButton = ({ usedLetters, onLetterClick, step, checkButton }) => {
   const selectedLetters = new Set(usedLetters);
 
   function handleClick(e) {
@@ -15,7 +15,9 @@ const LetterButton = ({ usedLetters, onLetterClick, step }) => {
     return (
       <button
         value={letter}
-        disabled={step === 7 ? letters : selectedLetters.has(letter)}
+        disabled={
+          step === 7 || checkButton ? letters : selectedLetters.has(letter)
+        }
         onClick={handleClick}
         style={{ height: "30px", width: "30px", marginRight: "6px" }}
       >

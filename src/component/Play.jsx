@@ -25,6 +25,16 @@ const Play = () => {
     setUsedLetter([...usedLetter, letter]);
   }
 
+  function checkFunction() {
+    const wordArray = wordSelected.toUpperCase().split("");
+    const result = wordArray.every((letter) => usedLetter.includes(letter));
+    if (result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   return (
     <div>
       <h1>Play Game</h1>
@@ -34,6 +44,7 @@ const Play = () => {
         step={step}
         usedLetters={usedLetter}
         onLetterClick={handleOnLetterClick}
+        checkButton={checkFunction()}
       />
       <br />
       <br />
@@ -42,6 +53,8 @@ const Play = () => {
           <p>Game Ended</p>
           <Hangman step={step} />
         </>
+      ) : checkFunction() ? (
+        "You Won"
       ) : (
         <Hangman step={step} />
       )}
