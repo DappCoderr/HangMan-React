@@ -7,7 +7,7 @@ import Hangman from "./Hangman";
 const Play = () => {
   const [usedLetter, setUsedLetter] = useState([]);
   const navigate = useNavigate();
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(-1);
 
   const wordSelected = useLocation().state?.wordSelected;
 
@@ -37,7 +37,14 @@ const Play = () => {
       />
       <br />
       <br />
-      {step === 8 ? "Game Ended" : <Hangman step={step} />}
+      {step === 7 ? (
+        <>
+          <p>Game Ended</p>
+          <Hangman step={step} />
+        </>
+      ) : (
+        <Hangman step={step} />
+      )}
       <hr />
       <br />
       <button onClick={handleClick}>Restart</button>

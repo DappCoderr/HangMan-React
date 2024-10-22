@@ -15,7 +15,7 @@ const LetterButton = ({ usedLetters, onLetterClick, step }) => {
     return (
       <button
         value={letter}
-        disabled={step === 8 ? letters : selectedLetters.has(letter)}
+        disabled={step === 7 ? letters : selectedLetters.has(letter)}
         onClick={handleClick}
         style={{ height: "30px", width: "30px", marginRight: "6px" }}
       >

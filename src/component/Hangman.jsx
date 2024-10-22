@@ -21,12 +21,14 @@ const Hangman = ({ step }) => {
   ];
   return (
     <div>
-      {/* if(step >) */}
-      <img
-        src={step > images.length ? images[length - 1] : images[step]}
-        alt="#"
-      />
-      console.log(step)
+      {step < 0 ? (
+        ""
+      ) : (
+        <img
+          src={step >= images.length ? images[length - 1] : images[step]}
+          alt="#"
+        />
+      )}
     </div>
   );
 };
