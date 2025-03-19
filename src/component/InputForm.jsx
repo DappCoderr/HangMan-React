@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Start.css"; // Or create a separate CSS file
 
 const InputForm = ({ onSubmit }) => {
   const [toggle, setToggle] = useState(true);
@@ -13,24 +14,34 @@ const InputForm = ({ onSubmit }) => {
     setValue(e.target.value);
   }
 
-  // Modified to prevent default form behavior
   function handleSubmit(e) {
     e.preventDefault();
-    onSubmit(value); // Passing value to onSubmit handler
+    onSubmit(value);
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type={toggle ? "password" : "text"}
-        onChange={handleValueText}
-        value={value}
-      />
-      <button type="button" onClick={handleToggle}>
-        {toggle ? "Show" : "Hide"}
+    <form className="input-form" onSubmit={handleSubmit}>
+      <div className="input-wrapper">
+        <input
+          className="form-input"
+          type={toggle ? "password" : "text"}
+          onChange={handleValueText}
+          value={value}
+          placeholder="Enter secret word..."
+        />
+      </div>
+      <div className="button-group">
+        <button
+          className={`toggle-button ${toggle ? "" : "hidden"}`}
+          type="button"
+          onClick={handleToggle}
+        >
+          {toggle ? "Show" : "Hide"}
+        </button>
+      </div>
+      <button className="submit-button" type="submit" disabled={!value}>
+        Play
       </button>
-      <hr />
-      <button type="submit">Play</button>
     </form>
   );
 };
