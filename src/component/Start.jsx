@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import InputForm from "./InputForm";
+import "./Start.css";
 
 const Start = () => {
   const navigate = useNavigate();
@@ -9,9 +10,11 @@ const Start = () => {
   };
 
   return (
-    <div>
-      <h1>Hang Man Game</h1>
-      <InputForm onSubmit={handleSubmit} />
+    <div className="start-container">
+      <h1 className="start-title">Hangman Game</h1>
+      <div className="glass-form-container">
+        <InputForm onSubmit={handleSubmit} />
+      </div>
     </div>
   );
 };
